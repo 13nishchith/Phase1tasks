@@ -1,38 +1,41 @@
 package SearchEmailid;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 
 public class SearchEmailID {
+	 public static boolean isValidEmail(String email) {
+		   String regex = "^(.+)@(.+)$";
+	       Pattern pattern = Pattern.compile(regex);
+	       Matcher matcher = pattern.matcher(email);
+	       return matcher.matches();
+	 }
 
-	static boolean s(String x[],String a) {
 
-
-		
-		for(String value:x) {
-			if(value.equals(a))
-		 return true;
-		}
-		return false;
-		
-	}
 
 
 
 public static void main(String[] args) {
-	// TODO Auto-generated method stub
-	String[] emailIds = {"dhruvik@mphasis.com" , "vinay@mphasis.com", "chaitanya@mphasis.com","abhi@mphasis.com","rahul@mphasis.com"};
+	String[] emailIds = {"nishchith@mphasis.com","dhruvik@mphasis.com" , "vinaymphasis.com", "chaitanya@mphasis.com","abhi@mphasis.com","rahul@mphasis.com"};
+	 for (String value : emailIds) {
+         System.out.println("The Email address " + value + " is " + (isValidEmail(value) ? "valid" : "invalid"));
+     }
 	
-	Scanner sc=new Scanner(System.in);
+	
 	
 	while(true) {
 		System.out.println("Enter the Email id to search");
+		Scanner sc=new Scanner(System.in);
+		
 	String name=sc.nextLine();
+	 System.out.println("The Email address " + name + " is " + (isValidEmail(name) ? "valid" : "invalid"));
+     
 	
-	//boolean r=SearchEmailID.a(name);
 	
-	System.out.println("Email id is : "+SearchEmailID.s(emailIds,name));
+	
 	}
 }
 
